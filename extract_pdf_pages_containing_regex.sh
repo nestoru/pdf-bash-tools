@@ -17,5 +17,5 @@ pdf_to_file=$2
 regex=$3
 
 dirname=`dirname $0`
-pages=$($dirname/find_pdf_pages_containing_regex.sh $pdf_from_file "$regex" | tr "\n" " ")
-$dirname/extract_pdf_pages.sh $pdf_from_file $pdf_to_file "$pages"
+pages=$($dirname/find_pdf_pages_containing_regex.sh "$pdf_from_file" "$regex" | tr "\n" " ")
+$dirname/extract_pdf_pages.sh "$pdf_from_file" "$pdf_to_file" "$pages"
