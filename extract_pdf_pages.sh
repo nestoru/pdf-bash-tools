@@ -21,7 +21,7 @@ touch "$pdf_to_file"
 for page in $space_separated_page_numbers ; do
     gs -dBATCH -dNOPAUSE -q -sOutputFile=-  \
     -dFirstPage=$page -dLastPage=$page -sDEVICE=pdfwrite \
-    $pdf_from_file \
+    "$pdf_from_file" \
     | gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
     -sOutputFile="$pdf_merged_file" "$pdf_to_file" - \
     && mv "$pdf_merged_file" "$pdf_to_file"

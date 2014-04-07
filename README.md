@@ -30,6 +30,7 @@ Example
 =======
 Run the below commands and note how the original sample file has 5 names and cities. The name "Jorge" is repeated in two pages. As we pull only those pages that contain the name "Jorge" the result is a shorter file containing only 2 pages.
 
+    rm -f  /tmp/names_and_cities_jorge.pdf
     open /tmp/names_and_cities_jorge.pdf 
     ./extract_pdf_pages_containing_regex.sh samples/names_and_cities.pdf /tmp/names_and_cities_jorge.pdf "Jorge"
     open /tmp/names_and_cities_jorge.pdf 
