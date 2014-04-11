@@ -26,14 +26,22 @@ Enter the directory and run the scripts without params to confirm you get the he
     ./extract_pdf_pages.sh 
     ./extract_pdf_pages_containing_regex.sh 
 
-Example
-=======
+Example 1
+=========
 Run the below commands and note how the original sample file has 5 names and cities. The name "Jorge" is repeated in two pages. As we pull only those pages that contain the name "Jorge" the result is a shorter file containing only 2 pages.
 
     rm -f  /tmp/names_and_cities_jorge.pdf
-    open /tmp/names_and_cities_jorge.pdf 
     ./extract_pdf_pages_containing_regex.sh samples/names_and_cities.pdf /tmp/names_and_cities_jorge.pdf "Jorge"
     open /tmp/names_and_cities_jorge.pdf 
+
+Example 2
+=========
+Run the below commands and note how even though encrypted with password "test", we are still able to produce a final pdf file. If you want that file encrypted then just run gs with proper flags as you can see explained inside the extract_pdf_pages.sh script:
+
+    rm -f  /tmp/names_and_cities_jorge.pdf
+    ./extract_pdf_pages_containing_regex.sh samples/names_and_cities.pdf /tmp/names_and_cities_jorge.pdf "Jorge" test
+    open /tmp/names_and_cities_jorge.pdf 
+
 
 
 

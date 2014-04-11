@@ -41,11 +41,18 @@ for page in $space_separated_page_numbers ; do
         # Merge into existing output file
         gs $pdf_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
         -sOutputFile="$pdf_merged_file" "$pdf_to_file" "$pdf_new_to_merge_file"
+
         # Use the merged file as a new output file
-        gs $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$pdf_to_file "$pdf_merged_file"
+	mv "$pdf_merged_file" "$pdf_to_file"
+
+        # Use the below instead if you need to use the same password to encrypt the result
+        # gs $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$pdf_to_file "$pdf_merged_file"
     else
         # Use the new to merge file as a new output file
-        gs $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$pdf_to_file "$pdf_new_to_merge_file"
+        mv "$pdf_new_to_merge_file" "$pdf_to_file"
+
+	# Use the below instead if you need to use the same password to encrypt the result
+	# gs $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$pdf_to_file "$pdf_new_to_merge_file"
     fi
     # cleanup
     rm -f "$pdf_new_to_merge_file"
