@@ -19,8 +19,6 @@ password=$4
 pdf_merged_file=$(mktemp /tmp/pdf_merged_file.XXXXXXX).pdf
 pdf_new_to_merge_file=$(mktemp /tmp/pdf_new_to_merge_file.XXXXXXX).pdf
 
-rm -f "$pdf_to_file"
-
 if [ -z $password ]
 then
     user_pwd_switch=""
@@ -40,11 +38,16 @@ for page in $space_separated_page_numbers ; do
     # Keep on merging to the output pdf if it exist
     if [ -f "$pdf_to_file" ]
     then
+        # Merge into existing output file
         gs $pdf_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
-        -sOutputFile="$pdf_merged_file" "$pdf_to_file" "$pdf_new_to_merge_file" \
-        && mv "$pdf_merged_file" "$pdf_to_file"
+        -sOutputFile="$pdf_merged_file" "$pdf_to_file" "$pdf_new_to_merge_file"
+        # Use the merged file as a new output file
+        gs $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$pdf_to_file "$pdf_merged_file"
     else
-	mv "$pdf_new_to_merge_file" "$pdf_to_file"
+        # Use the new to merge file as a new output file
+        gs $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$pdf_to_file "$pdf_new_to_merge_file"
     fi
-    rm -f $pdf_new_to_merge_file
+    # cleanup
+    rm -f "$pdf_new_to_merge_file"
+    rm -f "$pdf_merged_file"
 done

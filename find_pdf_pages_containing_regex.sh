@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 # /opt/scripts/find_pdf_pages_containing_regex.sh
 # @author: Nestor Urquiza
 # @date: 20140402
@@ -20,7 +20,7 @@ then
     pdftotext_cmd=pdftotext
 else
     pdfinfo_cmd="pdfinfo -upw $password"
-    pdftotext_cmd="pdftotext -upw $password"
+    pdftotext_cmd="pdftotext -opw $password -upw $password"
 fi
 pages=$($pdfinfo_cmd "$pdf_file" | grep "Pages" | grep -o "[0-9][0-9]*")
 for (( page=1; page<=$pages; page++ )); do
