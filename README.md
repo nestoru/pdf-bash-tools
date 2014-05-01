@@ -1,7 +1,7 @@
 pdf-bash-tools
 ==============
 
-Some bash scripts that leverage on existing pdf tools. Script names should be self exaplanatory.
+Some bash scripts that leverage on existing pdf tools. Script names should be self exaplanatory with the exception perhaps of pdfmark.sh which allows to change metadata in pdfs (example provided to add bookmarks).
 
 Dependencies
 ============
@@ -25,6 +25,7 @@ Enter the directory and run the scripts without params to confirm you get the he
     ./find_pdf_pages_containing_regex.sh 
     ./extract_pdf_pages.sh 
     ./extract_pdf_pages_containing_regex.sh 
+    ./pdfmark.sh
 
 Example 1
 =========
@@ -44,7 +45,7 @@ Run the below commands and note how even though encrypted with password "test", 
 
 Example 3
 =========
-Run the below commands and note how the resulting files (obtained from encrypted and not encrypted source pdf files) contain bookmarks.
+Run the below commands and note how the resulting files (obtained from encrypted and not encrypted source pdf files) contain bookmarks. The echo lines basically build a pdfmark (http://partners.adobe.com/public/developer/en/acrobat/sdk/pdf/pdf_creation_apis_and_specs/pdfmarkReference.pdf) to insert bookmarks in the source pdf.
 
     rm -f  /tmp/names_and_cities_bookmarked.pdf
     rm -f  /tmp/names_and_cities_decrypted_and_bookmarked.pdf
