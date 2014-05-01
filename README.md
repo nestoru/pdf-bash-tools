@@ -39,8 +39,24 @@ Example 2
 Run the below commands and note how even though encrypted with password "test", we are still able to produce a final pdf file. If you want that file encrypted then just run gs with proper flags as you can see explained inside the extract_pdf_pages.sh script:
 
     rm -f  /tmp/names_and_cities_jorge.pdf
-    ./extract_pdf_pages_containing_regex.sh samples/names_and_cities.pdf /tmp/names_and_cities_jorge.pdf "Jorge" test
+    ./extract_pdf_pages_containing_regex.sh samples/names_and_cities_encrypted.pdf /tmp/names_and_cities_jorge.pdf "Jorge" test
     open /tmp/names_and_cities_jorge.pdf 
+
+Example 3
+=========
+Run the below commands and note how the resulting files (obtained from encrypted and not encrypted source pdf files) contain bookmarks.
+
+    rm -f  /tmp/names_and_cities_bookmarked.pdf
+    rm -f  /tmp/names_and_cities_decrypted_and_bookmarked.pdf
+    echo '[ /Page 1 /Title (Nestor Urquiza) /OUT pdfmark' > /tmp/pdfmark
+    echo '[ /Page 2 /Title (Jorge Ruiz) /OUT pdfmark' >> /tmp/pdfmark
+    echo '[ /Page 3 /Title (Mark Johnson) /OUT pdfmark' >> /tmp/pdfmark
+    echo '[ /Page 4 /Title (Jorge Gacia) /OUT pdfmark' >> /tmp/pdfmark
+    echo '[ /Page 5 /Title (Jristo Jristov) /OUT pdfmark' >> /tmp/pdfmark
+    ./pdfmark.sh samples/names_and_cities.pdf /tmp/names_and_cities_bookmarked.pdf /tmp/pdfmark
+    open /tmp/names_and_cities_bookmarked.pdf
+    ./pdfmark.sh samples/names_and_cities_encrypted.pdf /tmp/names_and_cities_decrypted_and_bookmarked.pdf /tmp/pdfmark test
+    open /tmp/names_and_cities_decrypted_and_bookmarked.pdf 
 
 
 
