@@ -49,7 +49,8 @@ Run the below commands and note how the resulting files (obtained from encrypted
 
     rm -f  /tmp/names_and_cities_bookmarked.pdf
     rm -f  /tmp/names_and_cities_decrypted_and_bookmarked.pdf
-    echo '[ /Page 1 /Title (Nestor Urquiza) /OUT pdfmark' > /tmp/pdfmark
+    echo '[/PageMode /UseOutlines /DOCVIEW pdfmark' > /tmp/pdfmark
+    echo '[ /Page 1 /Title (Nestor Urquiza) /OUT pdfmark' >> /tmp/pdfmark
     echo '[ /Page 2 /Title (Jorge Ruiz) /OUT pdfmark' >> /tmp/pdfmark
     echo '[ /Page 3 /Title (Mark Johnson) /OUT pdfmark' >> /tmp/pdfmark
     echo '[ /Page 4 /Title (Jorge Gacia) /OUT pdfmark' >> /tmp/pdfmark
@@ -59,6 +60,13 @@ Run the below commands and note how the resulting files (obtained from encrypted
     ./pdfmark.sh samples/names_and_cities_encrypted.pdf /tmp/names_and_cities_decrypted_and_bookmarked.pdf /tmp/pdfmark test
     open /tmp/names_and_cities_decrypted_and_bookmarked.pdf 
 
+Example 4
+=========
+Run the below:
+    ./find_pdf_pages_containing_regex.sh --printmatch samples/names_and_cities.pdf "Jo[^ ]*"
 
-
+Assert the result is the page and the exact match separated by comma:
+    2,Jorge
+    3,Johnson
+    4,Jorge
 
