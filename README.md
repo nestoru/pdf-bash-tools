@@ -63,9 +63,11 @@ Run the below commands and note how the resulting files (obtained from encrypted
 Example 4
 =========
 Run the below:
+
     ./find_pdf_pages_containing_regex.sh --printmatch samples/names_and_cities.pdf "Jo[^ ]*"
 
 Assert the result is the page and the exact match separated by comma:
+
     2,Jorge
     3,Johnson
     4,Jorge
