@@ -45,7 +45,7 @@ Run the below commands and note how even though encrypted with password "test", 
 
 Example 3
 =========
-Run the below commands and note how the resulting files (obtained from encrypted and not encrypted source pdf files) contain bookmarks. The echo lines basically build a pdfmark (http://partners.adobe.com/public/developer/en/acrobat/sdk/pdf/pdf_creation_apis_and_specs/pdfmarkReference.pdf) to insert bookmarks in the source pdf.
+Run the below commands and note how the resulting files (obtained from encrypted and not encrypted source pdf files) contain bookmarks. The echo lines basically build a pdfmark (http://partners.adobe.com/public/developer/en/acrobat/sdk/pdf/pdf_creation_apis_and_specs/pdfmarkReference.pdf) to insert bookmarks in the source pdf. I have also added a test for filenames containing spaces.
 
     rm -f  /tmp/names_and_cities_bookmarked.pdf
     rm -f  /tmp/names_and_cities_decrypted_and_bookmarked.pdf
@@ -57,6 +57,10 @@ Run the below commands and note how the resulting files (obtained from encrypted
     echo '[ /Page 5 /Title (Jristo Jristov) /OUT pdfmark' >> /tmp/pdfmark
     ./pdfmark.sh samples/names_and_cities.pdf /tmp/names_and_cities_bookmarked.pdf /tmp/pdfmark
     open /tmp/names_and_cities_bookmarked.pdf
+    cp samples/names_and_cities.pdf "/tmp/names and cities.pdf"
+    rm -f  "/tmp/names and cities bookmarked.pdf"
+    ./pdfmark.sh "/tmp/names and cities.pdf" "/tmp/names and cities bookmarked.pdf" /tmp/pdfmark
+    open "/tmp/names and cities bookmarked.pdf"
     ./pdfmark.sh samples/names_and_cities_encrypted.pdf /tmp/names_and_cities_decrypted_and_bookmarked.pdf /tmp/pdfmark test
     open /tmp/names_and_cities_decrypted_and_bookmarked.pdf 
 
