@@ -75,4 +75,8 @@ Assert the result is the page and the exact match separated by comma:
     2,Jorge
     3,Johnson
     4,Jorge
+    
+Example 5
+=========
+Build your own example ;-) Just kidding. Look at the names_and_cities2.pdf file which includes an apostrophe in the name. Of course you will need to be careful with quotation and escaping. Try to go through the different examples above with the new file to find out the changes you will need. Yes this is homework, not kidding.
 
