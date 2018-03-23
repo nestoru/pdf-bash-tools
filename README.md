@@ -78,5 +78,12 @@ Assert the result is the page and the exact match separated by comma:
     
 Example 5
 =========
-Build your own example ;-) Just kidding. Look at the names_and_cities2.pdf file which includes an apostrophe in the name. Of course you will need to be careful with quotation and escaping. Try to go through the different examples above with the new file to find out the changes you will need. Yes this is homework, not kidding.
+Run the below commands and note how the file is encrypted with password "test" and a watermark shows up in all pages of the original pdf.
 
+    rm -f  /tmp/names_and_cities_watermarked.pdf
+    ./pdf_watermark.sh samples/names_and_cities.pdf /tmp/names_and_cities_watermarked.pdf "For the exclusive use of Nestor Urquiza at Sample, Inc" "test"
+    open /tmp/names_and_cities_watermarked.pdf 
+
+Example 6
+=========
+Look at the names_and_cities2.pdf file which includes an apostrophe in the name. Of course you will need to be careful with quotation and escaping. Try to go through the different examples above with the new file to find out the changes you will need. Yes this is homework, not kidding.

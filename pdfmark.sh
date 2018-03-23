@@ -29,5 +29,5 @@ else
     pdf_pwd_switch="-sPDFPassword=$password"
 fi
 
-gs $pdf_pwd_switch -dBATCH -dNOPAUSE -q -sOutputFile="$pdf_to_file" \
-    -sDEVICE=pdfwrite "$pdf_from_file" "$pdfmark_file"
+gs $pdf_pwd_switch $owner_pwd_switch $user_pwd_switch -dBATCH -dNOPAUSE -q -sOutputFile="$pdf_to_file" \
+    -sDEVICE=pdfwrite "$pdfmark_file" "$pdf_from_file"
