@@ -81,7 +81,7 @@ Example 5
 Run the below commands and note how the file is encrypted with password "test" and a watermark shows up in all pages of the original pdf.
 
     rm -f  /tmp/names_and_cities_watermarked.pdf
-    ./pdf_watermark.sh samples/names_and_cities.pdf /tmp/names_and_cities_watermarked.pdf "For the exclusive use of Nestor Urquiza at Sample, Inc" "test"
+    ./pdf_watermark.sh samples/names_and_cities.pdf /tmp/names_and_cities_watermarked.pdf "Nestor Urquiza - Sample, Inc" "test"
     open /tmp/names_and_cities_watermarked.pdf 
 
 Example 6

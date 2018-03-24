@@ -33,8 +33,11 @@ angle=45
      2 eq { pop false }
      {
          gsave      
-         /Helvetica 18 selectfont
-         .85 setgray 130 70 moveto 50 rotate (${watermark}) show
+         /Helvetica findfont 48 scalefont setfont
+         newpath
+         .90 setgray 130 70 moveto 50 rotate
+         (${watermark}) false  charpath
+         1 setlinewidth stroke
          grestore
          true
      } ifelse
@@ -43,6 +46,5 @@ angle=45
 EOF
 
 echo  "$pdf_mark" > "$tmpfile" 
-
 ./pdfmark.sh "$pdf_from_file" "$pdf_to_file" "$tmpfile" "$password"
 rm "$tmpfile"
